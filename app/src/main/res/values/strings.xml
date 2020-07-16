@@ -1,6 +1,9 @@
 <resources>
     <string name="app_name">StoreApp</string>
+    <string name="nav_header_title">Nombre de Usuario</string>
+    <string name="nav_header_desc">Navigation header</string>
     <string name="prompt_username">Nombre de Usuario</string>
     <string name="prompt_password">Contraseña</string>
     <string name="action_login">Iniciar Sesion</string>
+    <string name="menu_home">Home</string>
 </resources>

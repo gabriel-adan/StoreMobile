@@ -53,7 +53,11 @@ public class LoginActivity extends AppCompatActivity {
                 String fullName = user.getFullName();
                 String token = user.getToken();
                 setResult(Activity.RESULT_OK);
-
+                Intent intent = new Intent(getApplicationContext(), MainActivity.class);
+                intent.putExtra("UserName", userName);
+                intent.putExtra("FullName", fullName);
+                intent.putExtra("Token", token);
+                startActivity(intent);
                 finish();
             }
         });
@@ -65,5 +69,7 @@ public class LoginActivity extends AppCompatActivity {
                 Snackbar.make(loginButton, s, Snackbar.LENGTH_LONG).show();
             }
         });
+
+        loginViewModel.logIn("gsantillan", "12345");
     }
 }
