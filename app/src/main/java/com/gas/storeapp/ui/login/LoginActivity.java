@@ -5,22 +5,20 @@ import android.app.Activity;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProviders;
 
+import android.content.Intent;
 import android.os.Bundle;
 
-import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.text.Editable;
-import android.text.TextWatcher;
-import android.view.KeyEvent;
 import android.view.View;
-import android.view.inputmethod.EditorInfo;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ProgressBar;
-import android.widget.TextView;
 
 import com.gas.storeapp.R;
+import com.gas.storeapp.model.User;
+import com.gas.storeapp.ui.MainActivity;
+import com.google.android.material.snackbar.Snackbar;
 
 public class LoginActivity extends AppCompatActivity {
 
@@ -30,6 +28,7 @@ public class LoginActivity extends AppCompatActivity {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
+
         loginViewModel = ViewModelProviders.of(this).get(LoginViewModel.class);
 
         final EditText usernameEditText = findViewById(R.id.username);
@@ -37,45 +36,33 @@ public class LoginActivity extends AppCompatActivity {
         final Button loginButton = findViewById(R.id.login);
         final ProgressBar loadingProgressBar = findViewById(R.id.loading);
 
-        /*loadingProgressBar.setVisibility(View.GONE);
-        setResult(Activity.RESULT_OK);
-        finish();*/
-
-        TextWatcher afterTextChangedListener = new TextWatcher() {
-            @Override
-            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
-                // ignore
-            }
-
-            @Override
-            public void onTextChanged(CharSequence s, int start, int before, int count) {
-                // ignore
-            }
-
-            @Override
-            public void afterTextChanged(Editable s) {
-
-            }
-        };
-        usernameEditText.addTextChangedListener(afterTextChangedListener);
-        passwordEditText.addTextChangedListener(afterTextChangedListener);
-        passwordEditText.setOnEditorActionListener(new TextView.OnEditorActionListener() {
-
-            @Override
-            public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
-                if (actionId == EditorInfo.IME_ACTION_DONE) {
-                    //loginViewModel.login
-                }
-                return false;
-            }
-        });
-
         loginButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 loadingProgressBar.setVisibility(View.VISIBLE);
-                loginViewModel.login(usernameEditText.getText().toString(),
+                loginViewModel.logIn(usernameEditText.getText().toString(),
                         passwordEditText.getText().toString());
+            }
+        });
+
+        loginViewModel.onSuccessLogin().observe(this, new Observer<User>() {
+            @Override
+            public void onChanged(User user) {
+                loadingProgressBar.setVisibility(View.GONE);
+                String userName = user.getName();
+                String fullName = user.getFullName();
+                String token = user.getToken();
+                setResult(Activity.RESULT_OK);
+
+                finish();
+            }
+        });
+
+        loginViewModel.onErrorLogin().observe(this, new Observer<String>() {
+            @Override
+            public void onChanged(String s) {
+                loadingProgressBar.setVisibility(View.GONE);
+                Snackbar.make(loginButton, s, Snackbar.LENGTH_LONG).show();
             }
         });
     }
