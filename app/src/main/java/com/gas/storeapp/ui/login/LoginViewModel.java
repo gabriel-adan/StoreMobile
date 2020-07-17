@@ -56,7 +56,11 @@ public class LoginViewModel extends ViewModel {
                     }
                 } else {
                     StandarResponse<String> result = HttpService.ResponseError(response.errorBody(), StandarResponse.class);
-                    errorLiveData.setValue(result.errorMessage);
+                    if (result != null && result.errorMessage != null) {
+                        errorLiveData.setValue(result.errorMessage);
+                    } else {
+                        errorLiveData.setValue("Error de comunicación: " + response.message());
+                    }
                 }
             }
 

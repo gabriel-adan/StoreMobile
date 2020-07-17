@@ -5,5 +5,8 @@
     <string name="prompt_username">Nombre de Usuario</string>
     <string name="prompt_password">Contraseña</string>
     <string name="action_login">Iniciar Sesion</string>
-    <string name="menu_home">Home</string>
+    <string name="menu_home">Inicio</string>
+    <string name="prod_search">Buscar producto</string>
+    <string name="spec_search">Buscar especificación</string>
+    <string name="menu_catalog">Catálogo</string>
 </resources>

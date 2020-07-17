@@ -4,6 +4,14 @@
     tools:showIn="navigation_view">
 
     <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/nav_home"
+            android:icon="@drawable/ic_home_black_24dp"
+            android:title="@string/menu_home" />
 
+        <item
+            android:id="@+id/nav_catalog"
+            android:icon="@drawable/ic_insert_drive_file_black_24dp"
+            android:title="@string/menu_catalog" />
     </group>
 </menu>
