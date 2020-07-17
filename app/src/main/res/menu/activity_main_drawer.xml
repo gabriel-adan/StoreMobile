@@ -13,5 +13,10 @@
             android:id="@+id/nav_catalog"
             android:icon="@drawable/ic_insert_drive_file_black_24dp"
             android:title="@string/menu_catalog" />
+
+        <item
+            android:id="@+id/nav_order"
+            android:icon="@drawable/ic_shopping_cart_black_24dp"
+            android:title="@string/menu_order" />
     </group>
 </menu>

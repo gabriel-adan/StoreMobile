@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ui.order.OrderFragment">
+
+    <AutoCompleteTextView
+        android:id="@+id/auto_search_prod"
+        android:imeOptions="actionSearch"
+        android:maxLines="1"
+        android:inputType="text"
+        android:textSize="@dimen/field_text"
+        android:hint="@string/prod_search"
+        android:drawableLeft="@drawable/ic_search_black_24dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"/>
+
+    <EditText
+        android:id="@+id/order_ticket_code"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:autofillHints=""
+        android:hint="Nro de Factura"
+        android:inputType="text"
+        android:maxLines="1"
+        android:layout_marginTop="10dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/order_date"
+        app:layout_constraintTop_toBottomOf="@id/auto_search_prod"/>
+
+    <EditText
+        android:id="@+id/order_date"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:hint="Fecha de Factura"
+        android:inputType="date"
+        android:maxLines="1"
+        android:focusable="false"
+        android:clickable="true"
+        android:layout_marginTop="10dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/order_ticket_code"
+        app:layout_constraintTop_toBottomOf="@id/auto_search_prod" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recycler_product_list"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_marginTop="10dp"
+        tools:listitem="@layout/order_item"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/order_ticket_code"
+        app:layout_constraintBottom_toBottomOf="parent"/>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

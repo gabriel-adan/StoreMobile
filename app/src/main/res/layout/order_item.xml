@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <TextView
+        android:id="@+id/order_item_desc"
+        android:textSize="@dimen/item_text"
+        android:layout_marginLeft="5dp"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/amount"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/order_item_code"/>
+
+    <TextView
+        android:id="@+id/order_item_code"
+        android:textSize="@dimen/title_text"
+        android:layout_marginLeft="5dp"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/amount"
+        app:layout_constraintTop_toBottomOf="@+id/order_item_desc"
+        app:layout_constraintBottom_toTopOf="@+id/order_item_color_size"/>
+
+    <TextView
+        android:id="@+id/order_item_color_size"
+        android:textSize="@dimen/title_text"
+        android:layout_marginLeft="5dp"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/amount"
+        app:layout_constraintTop_toBottomOf="@+id/order_item_code"
+        app:layout_constraintBottom_toTopOf="@+id/order_item_mark_type"/>
+
+    <TextView
+        android:id="@+id/order_item_mark_type"
+        android:textSize="@dimen/title_text"
+        android:layout_marginLeft="5dp"
+        android:layout_marginBottom="5dp"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/amount"
+        app:layout_constraintTop_toBottomOf="@+id/order_item_color_size"
+        app:layout_constraintBottom_toTopOf="@+id/order_item_unit_cost"/>
+
+    <TextView
+        android:id="@+id/order_item_unit_cost"
+        android:textSize="@dimen/title_text"
+        android:layout_marginLeft="5dp"
+        android:layout_marginBottom="5dp"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/amount"
+        app:layout_constraintTop_toBottomOf="@+id/order_item_mark_type"
+        app:layout_constraintBottom_toBottomOf="parent"/>
+
+    <TextView
+        android:id="@+id/amount"
+        android:textSize="@dimen/field_text"
+        android:layout_marginRight="5dp"
+        android:textAlignment="center"
+        android:gravity="center"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toEndOf="@+id/order_item_desc"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"/>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="2dp"
+        android:background="#D8D8D8"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/order_item_unit_cost"/>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

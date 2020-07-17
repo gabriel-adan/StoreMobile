@@ -9,4 +9,5 @@
     <string name="prod_search">Buscar producto</string>
     <string name="spec_search">Buscar especificación</string>
     <string name="menu_catalog">Catálogo</string>
+    <string name="menu_order">Compras</string>
 </resources>

@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:padding="16dp"
+    app:layout_behavior="@string/appbar_scrolling_view_behavior">
+
+    <TextView
+        android:id="@+id/prod_code"
+        android:text="93487529295"
+        android:textSize="@dimen/title_text"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/text_detail"
+        android:text="PANTALON DE GABARDINA"
+        android:textSize="@dimen/field_text"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/prod_code" />
+    <TextView
+        android:id="@+id/text_size"
+        android:text="Talle: 42"
+        android:textSize="@dimen/title_text"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/text_detail"/>
+    <TextView
+        android:id="@+id/text_color"
+        android:text="Color: CLARO"
+        android:textSize="@dimen/title_text"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/text_size"/>
+    <TextView
+        android:id="@+id/text_price"
+        android:text="Precio de Venta: $ 1500"
+        android:textSize="@dimen/title_text"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/text_color"/>
+    <TextView
+        android:id="@+id/title_cost"
+        android:text="Costo Unitario"
+        android:textSize="@dimen/title_text"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="15dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/text_price"/>
+    <EditText
+        android:id="@+id/input_cost"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/title_cost"
+        android:inputType="numberDecimal"
+        android:textSize="@dimen/title_text"
+        android:maxLines="1">
+        <requestFocus/>
+    </EditText>
+    <TextView
+        android:id="@+id/title_amount"
+        android:text="Cantidad"
+        android:textSize="@dimen/title_text"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/input_cost"/>
+    <EditText
+        android:id="@+id/input_amount"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="@dimen/title_text"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/title_amount"
+        android:inputType="number"
+        android:maxLines="1">
+    </EditText>
+</androidx.constraintlayout.widget.ConstraintLayout>

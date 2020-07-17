@@ -6,4 +6,5 @@
     <dimen name="nav_header_height">176dp</dimen>
     <dimen name="title_text">18dp</dimen>
     <dimen name="field_text">20dp</dimen>
+    <dimen name="item_text">25dp</dimen>
 </resources>
