@@ -128,6 +128,9 @@ public class SaleFragment extends Fragment implements ProductInputDialogFragment
         mViewModel.onSuccess().observe(owner, new Observer<String>() {
             @Override
             public void onChanged(String s) {
+                saleItemAdapter.clear();
+                total = 0;
+                totalTextView.setText(String.format("$ %.2f", total));
                 Toast.makeText(context, s, Toast.LENGTH_LONG).show();
             }
         });

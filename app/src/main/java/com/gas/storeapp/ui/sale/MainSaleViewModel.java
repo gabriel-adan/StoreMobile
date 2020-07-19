@@ -27,8 +27,8 @@ public class MainSaleViewModel extends ViewModel {
         saleService = HttpService.createService(ISaleService.class);
         saleList = new MutableLiveData<>();
         Date currentTime = Calendar.getInstance().getTime();
-        String strDate = new SimpleDateFormat("yyyy/MM/dd").format(currentTime);
-        saleService.list("2020/07/17").enqueue(new Callback<List<Sale>>() {
+        String date = new SimpleDateFormat("yyyy-MM-dd").format(currentTime);
+        saleService.list(date).enqueue(new Callback<List<Sale>>() {
             @Override
             public void onResponse(Call<List<Sale>> call, Response<List<Sale>> response) {
                 if (response.isSuccessful()) {

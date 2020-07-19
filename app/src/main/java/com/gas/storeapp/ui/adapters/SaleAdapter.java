@@ -40,7 +40,7 @@ public class SaleAdapter extends RecyclerView.Adapter<SaleAdapter.SaleViewHolder
             holder.textDate.setText("Fecha: ");
         }
         holder.textUser.setText("Vendedor: " + sale.getUserName());
-        holder.textTotal.setText("$" + sale.getTotal());
+        holder.textTotal.setText(String.format("$ %.2f", sale.getTotal()));
     }
 
     public void addSale(Sale sale) {

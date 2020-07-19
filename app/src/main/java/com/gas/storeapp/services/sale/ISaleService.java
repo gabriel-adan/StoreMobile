@@ -3,7 +3,6 @@ package com.gas.storeapp.services.sale;
 import com.gas.storeapp.model.Sale;
 import com.gas.storeapp.services.StandarResponse;
 
-import java.util.Date;
 import java.util.List;
 
 import retrofit2.Call;
@@ -16,6 +15,6 @@ public interface ISaleService {
     @POST("api/Sales")
     Call<StandarResponse<String>> register(@Body SaleData body);
 
-    @GET("api/Sales/{date}")
+    @GET("api/Sales/Find/{date}")
     Call<List<Sale>> list(@Path("date") String date);
 }
