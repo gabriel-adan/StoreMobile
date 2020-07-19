@@ -4,6 +4,7 @@ public class Product {
     private int id;
     private String code;
     private float price;
+    private String brand;
 
     private Specification specification;
     private Item size;
@@ -13,10 +14,11 @@ public class Product {
 
     }
 
-    public Product(String code, float price, String desc, String mark, String type, Item category, Item size, Item color) {
+    public Product(String code, float price, String brand, String desc, String detail, String type, Item category, Item size, Item color) {
         this.code = code;
         this.price = price;
-        this.specification = new Specification(desc, mark, type, category);
+        this.brand = brand;
+        this.specification = new Specification(desc, detail, category);
         this.size = size;
         this.color = color;
     }
@@ -65,25 +67,31 @@ public class Product {
         this.color = color;
     }
 
+    public String getBrand() {
+        return brand;
+    }
+
+    public void setBrand(String brand) {
+        this.brand = brand;
+    }
+
     public String getSizeColor() {
         return "Talle: " + this.size.getName() + " Color: " + this.color.getName();
     }
 
-    public String getMarkType() {
-        String mark = specification.getMark();
-        String type = specification.getType();
-        if (mark != null && type != null) {
-            return "Marca: " + mark + " Detalles: " + type;
+    public String getBrandDetail() {
+        String detail = specification.getDetail();
+        if (brand != null && detail != null) {
+            return "Marca: " + brand + " Detalles: " + detail;
         } else {
-            if (mark == null && type != null) {
-                return "Detalles: " + type;
+            if (brand != null && detail == null) {
+                return "Marca: " + brand;
             } else {
-                if (mark != null && type == null) {
-                    return "Marca: " + mark;
-                } else {
-                    return null;
+                if (brand == null && detail != null) {
+                    return "Detalles: " + detail;
                 }
             }
         }
+        return null;
     }
 }

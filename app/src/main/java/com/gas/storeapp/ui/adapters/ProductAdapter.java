@@ -34,16 +34,15 @@ public class ProductAdapter extends ArrayAdapter<Product> {
         }
         TextView textCode = view.findViewById(R.id.prod_code);
         TextView textDesc = view.findViewById(R.id.prod_desc);
-        TextView textMarkType = view.findViewById(R.id.prod_mark_type);
         TextView textSizeColor = view.findViewById(R.id.prod_size_color);
         TextView textPrice = view.findViewById(R.id.prod_price);
         Product product = products.get(position);
         textCode.setText(product.getCode());
         textDesc.setText(product.getSpecification().getDescription());
-        String markType = product.getMarkType();
-        if (markType != null) {
-            textMarkType.setText(markType);
-        }
+        TextView textDetail = view.findViewById(R.id.prod_detail);
+        textDetail.setText(product.getSpecification().getDetail());
+        TextView textBrand = view.findViewById(R.id.prod_brand);
+        textBrand.setText(product.getBrand());
         textSizeColor.setText(product.getSizeColor());
         textPrice.setText("Precio $" + product.getPrice());
         return view;

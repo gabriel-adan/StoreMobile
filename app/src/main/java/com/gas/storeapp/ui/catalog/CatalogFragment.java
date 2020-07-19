@@ -42,7 +42,7 @@ public class CatalogFragment extends Fragment implements AdapterView.OnItemSelec
     private Context context;
     private AutoCompleteTextView productSearch, specificationSearch;
     private Spinner colorSpinner, sizeSpinner, categorySpinner;
-    private EditText textPrice, textMark, textDetail;
+    private EditText textPrice, textBrand, textDetail;
     private Button btnAccept, btnCancel;
     private List<Product> productList;
     private List<Specification> specificationList;
@@ -61,7 +61,7 @@ public class CatalogFragment extends Fragment implements AdapterView.OnItemSelec
         textPrice = view.findViewById(R.id.text_price);
         categorySpinner = view.findViewById(R.id.spinner_categories);
         specificationSearch = view.findViewById(R.id.input_spec_search);
-        textMark = view.findViewById(R.id.text_mark);
+        textBrand = view.findViewById(R.id.text_brand);
         textDetail = view.findViewById(R.id.text_detail);
         btnAccept = view.findViewById(R.id.btn_prod_accept);
         btnCancel = view.findViewById(R.id.btn_prod_cancel);
@@ -103,7 +103,7 @@ public class CatalogFragment extends Fragment implements AdapterView.OnItemSelec
                             public void onClick(DialogInterface dialog, int id) {
                                 try {
                                     float price = Float.parseFloat(textPrice.getText().toString());
-                                    mViewModel.register(productSearch.getText().toString(), price, specificationSearch.getText().toString(), textMark.getText().toString(), textDetail.getText().toString());
+                                    mViewModel.register(productSearch.getText().toString(), price, specificationSearch.getText().toString(), textBrand.getText().toString(), textDetail.getText().toString());
                                 } catch (Exception ex) {
                                     textPrice.setError("Precio de venta inválido");
                                     textPrice.requestFocus();
@@ -180,7 +180,7 @@ public class CatalogFragment extends Fragment implements AdapterView.OnItemSelec
             @Override
             public void onChanged(List<Specification> specifications) {
                 specificationList.clear();
-                for (Specification specification : specificationList) {
+                for (Specification specification : specifications) {
                     specificationList.add(specification);
                 }
                 specificationAdapter.notifyDataSetChanged();
@@ -266,8 +266,8 @@ public class CatalogFragment extends Fragment implements AdapterView.OnItemSelec
             pos = categoryAdapter.getPosition(product.getSpecification().getCategory().getName());
             categorySpinner.setSelection(pos);
             specificationSearch.setText(product.getSpecification().getDescription());
-            textMark.setText(product.getSpecification().getMark());
-            textDetail.setText(product.getSpecification().getType());
+            textBrand.setText(product.getBrand());
+            textDetail.setText(product.getSpecification().getDetail());
             textPrice.setText("" + product.getPrice());
             onSpecificationSelected(product.getSpecification());
         }
@@ -276,8 +276,7 @@ public class CatalogFragment extends Fragment implements AdapterView.OnItemSelec
     private void onSpecificationSelected(Specification specification) {
         if (specification != null) {
             specificationSearch.setText(specification.getDescription(), false);
-            textMark.setText(specification.getMark());
-            textDetail.setText(specification.getType());
+            textDetail.setText(specification.getDetail());
             ArrayAdapter<String> categoryAdapter = (ArrayAdapter<String>)categorySpinner.getAdapter();
             int pos = categoryAdapter.getPosition(specification.getCategory().getName());
             categorySpinner.setSelection(pos);
@@ -291,7 +290,7 @@ public class CatalogFragment extends Fragment implements AdapterView.OnItemSelec
         sizeSpinner.setSelection(0);
         categorySpinner.setSelection(0);
         specificationSearch.setText("", false);
-        textMark.setText("");
+        textBrand.setText("");
         textDetail.setText("");
         textPrice.setText("");
     }

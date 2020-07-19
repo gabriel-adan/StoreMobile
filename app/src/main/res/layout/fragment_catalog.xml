@@ -27,6 +27,7 @@
         android:layout_height="wrap_content"
         android:text="Color"
         android:textSize="@dimen/title_text"
+        android:layout_marginTop="15dp"
         app:layout_constraintEnd_toStartOf="@+id/textview_size"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/input_prod_search" />
@@ -46,6 +47,7 @@
         android:layout_height="wrap_content"
         android:text="Talle"
         android:textSize="@dimen/title_text"
+        android:layout_marginTop="15dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/textview_color"
         app:layout_constraintTop_toBottomOf="@+id/input_prod_search" />
@@ -65,6 +67,7 @@
         android:layout_height="wrap_content"
         android:text="Precio de Venta"
         android:textSize="@dimen/title_text"
+        android:layout_marginTop="15dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/textview_size"
         app:layout_constraintTop_toBottomOf="@+id/spinner_color" />
@@ -81,11 +84,34 @@
         app:layout_constraintTop_toBottomOf="@+id/textview_price" />
 
     <TextView
+        android:id="@+id/textview_brand"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="Marca"
+        android:layout_marginTop="15dp"
+        android:textSize="@dimen/title_text"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/textview_price"
+        app:layout_constraintTop_toBottomOf="@+id/spinner_size"/>
+
+    <EditText
+        android:id="@+id/text_brand"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:textSize="@dimen/field_text"
+        android:maxLines="1"
+        android:inputType="text"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/text_price"
+        app:layout_constraintTop_toBottomOf="@+id/textview_brand"/>
+
+    <TextView
         android:id="@+id/textview_description"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Descripción"
         android:textSize="@dimen/title_text"
+        android:layout_marginTop="15dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/text_price" />
@@ -110,6 +136,7 @@
         android:layout_height="wrap_content"
         android:text="Categoría"
         android:textSize="@dimen/title_text"
+        android:layout_marginTop="15dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/input_spec_search" />
@@ -124,35 +151,15 @@
         app:layout_constraintTop_toBottomOf="@+id/textview_category"/>
 
     <TextView
-        android:id="@+id/textview_mark"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Marca"
-        android:textSize="@dimen/title_text"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/spinner_categories"/>
-
-    <EditText
-        android:id="@+id/text_mark"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:textSize="@dimen/field_text"
-        android:maxLines="1"
-        android:inputType="text"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textview_mark"/>
-
-    <TextView
         android:id="@+id/textview_detail"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Detalles"
         android:textSize="@dimen/title_text"
+        android:layout_marginTop="15dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/text_mark"/>
+        app:layout_constraintTop_toBottomOf="@+id/spinner_categories"/>
 
     <EditText
         android:id="@+id/text_detail"
@@ -168,8 +175,9 @@
     <Button
         android:id="@+id/btn_prod_cancel"
         android:layout_width="0dp"
-        android:text="Cancelar"
         android:layout_height="wrap_content"
+        android:text="Cancelar"
+        android:layout_marginTop="15dp"
         app:layout_constraintEnd_toStartOf="@+id/btn_prod_accept"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/text_detail" />
@@ -177,8 +185,9 @@
     <Button
         android:id="@+id/btn_prod_accept"
         android:layout_width="0dp"
-        android:text="Aceptar"
         android:layout_height="wrap_content"
+        android:text="Aceptar"
+        android:layout_marginTop="15dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/btn_prod_cancel"
         app:layout_constraintTop_toBottomOf="@+id/text_detail" />

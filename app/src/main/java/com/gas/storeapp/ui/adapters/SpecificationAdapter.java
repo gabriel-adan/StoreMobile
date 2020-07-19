@@ -33,16 +33,10 @@ public class SpecificationAdapter extends ArrayAdapter<Specification> {
         Specification specification = specifications.get(position);
         TextView textDesc = view.findViewById(R.id.spec_desc);
         textDesc.setText(specification.getDescription());
-        if (specification.getMark() != null) {
-            TextView textMark = view.findViewById(R.id.spec_mark);
-            textMark.setText("Marca: " + specification.getMark());
-        }
-        if (specification.getType() != null) {
-            TextView textType = view.findViewById(R.id.spec_type);
-            textType.setText("Detalles: " + specification.getType());
-        }
+        TextView textDetail = view.findViewById(R.id.spec_detail);
+        textDetail.setText(specification.getDetail());
         TextView textCategory = view.findViewById(R.id.spec_category);
-        textCategory.setText("Categoria: " + specification.getCategory().getName());
+        textCategory.setText(specification.getCategory().getName());
         return view;
     }
 

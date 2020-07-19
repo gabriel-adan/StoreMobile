@@ -45,7 +45,23 @@ public class OrderDetail {
         return product.getSizeColor();
     }
 
-    public String getMarkType() {
-        return product.getMarkType();
+    public float getPrice() {
+        return product.getPrice();
+    }
+
+    public Product getProduct() {
+        return product;
+    }
+
+    public String getBrand() {
+        return product.getBrand();
+    }
+
+    public String getDetail() {
+        return product.getSpecification().getDetail();
+    }
+
+    public String getBrandDetail() {
+        return product.getBrandDetail();
     }
 }

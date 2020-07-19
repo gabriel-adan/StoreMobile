@@ -57,16 +57,13 @@ public class OrderViewModel extends ViewModel {
                 @Override
                 public void onResponse(Call<List<Product>> call, Response<List<Product>> response) {
                     if (response.isSuccessful()) {
-                        List<Product> products = response.body();
-                        if (products.size() > 0) {
-                            productList.setValue(products);
-                        }
+                        productList.setValue(response.body());
                     }
                 }
 
                 @Override
                 public void onFailure(Call<List<Product>> call, Throwable t) {
-                    t.printStackTrace();
+
                 }
             });
         }

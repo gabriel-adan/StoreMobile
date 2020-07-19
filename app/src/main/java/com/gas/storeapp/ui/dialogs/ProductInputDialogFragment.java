@@ -28,14 +28,17 @@ public class ProductInputDialogFragment extends DialogFragment {
         LayoutInflater inflater = getLayoutInflater();
         View view = inflater.inflate(R.layout.product_input, null);
         TextView textCode = view.findViewById(R.id.prod_code);
+        TextView textDescription = view.findViewById(R.id.text_description);
         TextView textDetail = view.findViewById(R.id.text_detail);
         TextView textPrice = view.findViewById(R.id.text_price);
         TextView textSize = view.findViewById(R.id.text_size);
         TextView textColor = view.findViewById(R.id.text_color);
         EditText textCost = view.findViewById(R.id.input_cost);
+        textCost.setText(product.getPrice() + "");
         EditText textAmount = view.findViewById(R.id.input_amount);
         textCode.setText(product.getCode());
-        textDetail.setText(product.getSpecification().getDescription());
+        textDescription.setText(product.getSpecification().getDescription());
+        textDetail.setText(product.getSpecification().getDetail());
         textPrice.setText("Precio de Venta: $" + product.getPrice());
         textSize.setText("Talle: " + product.getSize().getName());
         textColor.setText("Color: " + product.getColor().getName());

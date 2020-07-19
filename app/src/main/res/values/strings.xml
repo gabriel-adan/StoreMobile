@@ -10,4 +10,9 @@
     <string name="spec_search">Buscar especificación</string>
     <string name="menu_catalog">Catálogo</string>
     <string name="menu_order">Compras</string>
+    <string name="menu_main_sale">Ventas</string>
+    <string name="menu_sale">Nueva Venta</string>
+    <string name="menu_action_sales_date">Ventas por día</string>
+    <string name="menu_action_sales_now">Ventas de hoy</string>
+    <string name="menu_action_sale_save">Registrar venta</string>
 </resources>

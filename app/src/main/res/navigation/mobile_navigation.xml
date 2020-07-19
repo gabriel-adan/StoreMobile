@@ -26,4 +26,19 @@
         tools:layout="@layout/fragment_order">
     </fragment>
 
+    <fragment
+        android:id="@+id/nav_main_sale"
+        android:name="com.gas.storeapp.ui.sale.MainSaleFragment"
+        android:label="@string/menu_main_sale"
+        tools:layout="@layout/fragment_sale_main">
+        <action
+            android:id="@+id/action_nav_main_sale_to_saleFragment"
+            app:destination="@id/nav_sale" />
+    </fragment>
+    <fragment
+        android:id="@+id/nav_sale"
+        android:name="com.gas.storeapp.ui.sale.SaleFragment"
+        android:label="@string/menu_sale"
+        tools:layout="@layout/fragment_sale" />
+
 </navigation>

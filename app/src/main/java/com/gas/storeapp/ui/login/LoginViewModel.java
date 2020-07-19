@@ -47,9 +47,10 @@ public class LoginViewModel extends ViewModel {
                     HttpService.TOKEN = authResult.access_token;
                     try {
                         JWT jwt = new JWT(authResult.access_token);
+                        System.out.println(authResult.access_token);
                         Claim userName = jwt.getClaim("User");
                         Claim accountName = jwt.getClaim("UserName");
-                        User user = new User(accountName.asString(), userName.asString(), authResult.access_token);
+                        User user = new User(userName.asString(), accountName.asString(), authResult.access_token);
                         tokenLiveData.setValue(user);
                     } catch (DecodeException e) {
                         errorLiveData.setValue("Error al iniciar sesion...");

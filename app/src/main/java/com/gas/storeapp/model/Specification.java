@@ -3,8 +3,7 @@ package com.gas.storeapp.model;
 public class Specification {
     private int id;
     private String description;
-    private String mark;
-    private String type;
+    private String detail;
 
     private Item category;
 
@@ -12,10 +11,9 @@ public class Specification {
 
     }
 
-    public Specification(String desc, String mark, String type, Item category) {
+    public Specification(String desc, String detail, Item category) {
         this.description = desc;
-        this.mark = mark;
-        this.type = type;
+        this.detail = detail;
         this.category = category;
     }
 
@@ -31,20 +29,12 @@ public class Specification {
         this.description = description;
     }
 
-    public String getMark() {
-        return mark;
+    public String getDetail() {
+        return detail;
     }
 
-    public void setMark(String mark) {
-        this.mark = mark;
-    }
-
-    public String getType() {
-        return type;
-    }
-
-    public void setType(String type) {
-        this.type = type;
+    public void setDetail(String detail) {
+        this.detail = detail;
     }
 
     public Item getCategory() {

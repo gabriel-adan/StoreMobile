@@ -52,7 +52,7 @@ public class MainActivity extends AppCompatActivity {
 
         }
         mAppBarConfiguration = new AppBarConfiguration.Builder(
-                R.id.nav_home, R.id.nav_catalog, R.id.nav_order)
+                R.id.nav_home, R.id.nav_catalog, R.id.nav_order, R.id.nav_main_sale)
                 .setDrawerLayout(drawer)
                 .build();
         NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment);

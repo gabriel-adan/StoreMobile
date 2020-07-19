@@ -186,11 +186,11 @@ public class CatalogViewModel extends ViewModel {
         }
     }
 
-    public void register(String code, float price, String desc, String mark, String type) {
+    public void register(String code, float price, String desc, String brand, String detail) {
         int specificationId = 0;
         if (specificationSelected != null)
             specificationId = specificationSelected.getId();
-        ProductData productData = new ProductData(code, price, desc, mark, type, specificationId,
+        ProductData productData = new ProductData(code, price, desc, brand, detail, specificationId,
                 colorSelected.getId(), sizeSelected.getId(), categorySelected.getId());
         catalogService.register(productData).enqueue(new Callback<StandarResponse<String>>() {
             @Override

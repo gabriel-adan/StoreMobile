@@ -39,7 +39,7 @@ public class ProductItemAdapter extends RecyclerView.Adapter<ProductItemAdapter.
         holder.textDesc.setText(orderDetail.getDescription());
         holder.textCode.setText(orderDetail.getCode());
         holder.textSizeColor.setText(orderDetail.getSizeColor());
-        holder.textMarkType.setText(orderDetail.getMarkType());
+        holder.textBrandDetail.setText(orderDetail.getBrandDetail());
         holder.textUnitCost.setText("Precio de Costo: $" + orderDetail.getUnitCost());
         holder.textAmount.setText(orderDetail.getAmount() + " Uds");
     }
@@ -58,7 +58,7 @@ public class ProductItemAdapter extends RecyclerView.Adapter<ProductItemAdapter.
         public TextView textDesc;
         public TextView textCode;
         public TextView textSizeColor;
-        public TextView textMarkType;
+        public TextView textBrandDetail;
         public TextView textUnitCost;
         public TextView textAmount;
 
@@ -67,7 +67,7 @@ public class ProductItemAdapter extends RecyclerView.Adapter<ProductItemAdapter.
             textDesc = view.findViewById(R.id.order_item_desc);
             textCode = view.findViewById(R.id.order_item_code);
             textSizeColor = view.findViewById(R.id.order_item_color_size);
-            textMarkType = view.findViewById(R.id.order_item_mark_type);
+            textBrandDetail = view.findViewById(R.id.order_item_brand_detail);
             textUnitCost = view.findViewById(R.id.order_item_unit_cost);
             textAmount = view.findViewById(R.id.amount);
         }

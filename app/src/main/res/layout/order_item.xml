@@ -36,10 +36,10 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/amount"
         app:layout_constraintTop_toBottomOf="@+id/order_item_code"
-        app:layout_constraintBottom_toTopOf="@+id/order_item_mark_type"/>
+        app:layout_constraintBottom_toTopOf="@+id/order_item_brand"/>
 
     <TextView
-        android:id="@+id/order_item_mark_type"
+        android:id="@+id/order_item_brand_detail"
         android:textSize="@dimen/title_text"
         android:layout_marginLeft="5dp"
         android:layout_marginBottom="5dp"
@@ -59,7 +59,7 @@
         android:layout_height="wrap_content"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/amount"
-        app:layout_constraintTop_toBottomOf="@+id/order_item_mark_type"
+        app:layout_constraintTop_toBottomOf="@+id/order_item_brand"
         app:layout_constraintBottom_toBottomOf="parent"/>
 
     <TextView

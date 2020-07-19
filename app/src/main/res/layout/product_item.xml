@@ -8,27 +8,46 @@
         android:id="@+id/prod_code"
         android:textSize="@dimen/title_text"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"/>
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:layout_marginLeft="5dp"
+        android:layout_marginRight="5dp"/>
     <TextView
         android:id="@+id/prod_desc"
         android:textSize="@dimen/title_text"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"/>
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="5dp"
+        android:layout_marginRight="5dp"/>
     <TextView
-        android:id="@+id/prod_mark_type"
+        android:id="@+id/prod_detail"
         android:textSize="@dimen/title_text"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"/>
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="5dp"
+        android:layout_marginRight="5dp"/>
+    <TextView
+        android:id="@+id/prod_brand"
+        android:textSize="@dimen/title_text"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="5dp"
+        android:layout_marginRight="5dp"/>
     <TextView
         android:id="@+id/prod_size_color"
         android:textSize="@dimen/title_text"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"/>
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="5dp"
+        android:layout_marginRight="5dp"/>
     <TextView
         android:id="@+id/prod_price"
         android:textSize="@dimen/title_text"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"/>
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="5dp"
+        android:layout_marginRight="5dp"
+        android:layout_marginBottom="5dp"/>
     <View
         android:layout_width="match_parent"
         android:layout_height="2dp"
