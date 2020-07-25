@@ -13,6 +13,7 @@ import androidx.annotation.Nullable;
 import com.gas.storeapp.R;
 import com.gas.storeapp.model.Product;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class ProductAdapter extends ArrayAdapter<Product> {
@@ -20,10 +21,10 @@ public class ProductAdapter extends ArrayAdapter<Product> {
     private Context context;
     private List<Product> products;
 
-    public ProductAdapter(@NonNull Context context, @NonNull List<Product> objects) {
-        super(context, R.layout.product_item, objects);
+    public ProductAdapter(@NonNull Context context) {
+        super(context, R.layout.product_item);
         this.context = context;
-        products = objects;
+        products = new ArrayList<>();
     }
 
     @NonNull
@@ -67,5 +68,11 @@ public class ProductAdapter extends ArrayAdapter<Product> {
     @Override
     public void add(@Nullable Product object) {
         products.add(object);
+    }
+
+    @Override
+    public void clear() {
+        products.clear();
+        notifyDataSetChanged();
     }
 }

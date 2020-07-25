@@ -32,7 +32,6 @@ import com.gas.storeapp.ui.dialogs.DatePickerDialogFragment;
 import com.gas.storeapp.ui.dialogs.ProductInputDialogFragment;
 
 import java.text.SimpleDateFormat;
-import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -40,7 +39,6 @@ public class OrderFragment extends Fragment implements ProductInputDialogFragmen
 
     private OrderViewModel mViewModel;
     private AutoCompleteTextView productSearch;
-    private List<Product> productList;
     private Context context;
     private ProductItemAdapter productItemAdapter;
     private EditText editDate, editTicketCode;
@@ -77,8 +75,7 @@ public class OrderFragment extends Fragment implements ProductInputDialogFragmen
         super.onActivityCreated(savedInstanceState);
         mViewModel = ViewModelProviders.of(this).get(OrderViewModel.class);
         LifecycleOwner owner = getViewLifecycleOwner();
-        productList = new ArrayList<>();
-        ProductAdapter productAdapter = new ProductAdapter(context, productList);
+        ProductAdapter productAdapter = new ProductAdapter(context);
         productSearch.setAdapter(productAdapter);
         productSearch.setOnKeyListener(new View.OnKeyListener() {
             @Override
@@ -94,9 +91,9 @@ public class OrderFragment extends Fragment implements ProductInputDialogFragmen
         mViewModel.onProductList().observe(owner, new Observer<List<Product>>() {
             @Override
             public void onChanged(List<Product> products) {
-                productList.clear();
+                productAdapter.clear();
                 for (Product product : products) {
-                    productList.add(product);
+                    productAdapter.add(product);
                 }
                 productAdapter.notifyDataSetChanged();
                 if (products.size() > 0) {

@@ -35,10 +35,26 @@
             android:id="@+id/action_nav_main_sale_to_saleFragment"
             app:destination="@id/nav_sale" />
     </fragment>
+
     <fragment
         android:id="@+id/nav_sale"
         android:name="com.gas.storeapp.ui.sale.SaleFragment"
         android:label="@string/menu_sale"
         tools:layout="@layout/fragment_sale" />
 
+    <fragment
+        android:id="@+id/nav_main_credit"
+        android:name="com.gas.storeapp.ui.credit.MainCreditFragment"
+        android:label="@string/menu_main_credit"
+        tools:layout="@layout/fragment_credit_main">
+        <action
+            android:id="@+id/action_nav_main_credit_to_creditResumeFragment"
+            app:destination="@+id/nav_credit_resume"/>
+    </fragment>
+
+    <fragment
+        android:id="@+id/nav_credit_resume"
+        android:name="com.gas.storeapp.ui.credit.CreditResumeFragment"
+        android:label="Resumen de Cuenta"
+        tools:layout="@layout/fragment_credit_resume"/>
 </navigation>

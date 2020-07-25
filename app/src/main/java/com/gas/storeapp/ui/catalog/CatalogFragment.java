@@ -33,7 +33,6 @@ import com.gas.storeapp.model.Specification;
 import com.gas.storeapp.ui.adapters.ProductAdapter;
 import com.gas.storeapp.ui.adapters.SpecificationAdapter;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class CatalogFragment extends Fragment implements AdapterView.OnItemSelectedListener {
@@ -44,8 +43,6 @@ public class CatalogFragment extends Fragment implements AdapterView.OnItemSelec
     private Spinner colorSpinner, sizeSpinner, categorySpinner;
     private EditText textPrice, textBrand, textDetail;
     private Button btnAccept, btnCancel;
-    private List<Product> productList;
-    private List<Specification> specificationList;
 
     public static CatalogFragment newInstance() {
         return new CatalogFragment();
@@ -124,11 +121,9 @@ public class CatalogFragment extends Fragment implements AdapterView.OnItemSelec
                 onClear();
             }
         });
-        productList = new ArrayList<>();
-        specificationList = new ArrayList<>();
-        ProductAdapter productAdapter = new ProductAdapter(context, productList);
+        ProductAdapter productAdapter = new ProductAdapter(context);
         productSearch.setAdapter(productAdapter);
-        SpecificationAdapter specificationAdapter = new SpecificationAdapter(context, specificationList);
+        SpecificationAdapter specificationAdapter = new SpecificationAdapter(context);
         specificationSearch.setAdapter(specificationAdapter);
         productSearch.setOnKeyListener(new View.OnKeyListener() {
             @Override
@@ -166,9 +161,9 @@ public class CatalogFragment extends Fragment implements AdapterView.OnItemSelec
         mViewModel.onProductList().observe(owner, new Observer<List<Product>>() {
             @Override
             public void onChanged(List<Product> products) {
-                productList.clear();
+                productAdapter.clear();
                 for (Product product : products) {
-                    productList.add(product);
+                    productAdapter.add(product);
                 }
                 productAdapter.notifyDataSetChanged();
                 if (products.size() > 0) {
@@ -179,9 +174,9 @@ public class CatalogFragment extends Fragment implements AdapterView.OnItemSelec
         mViewModel.onSpecificationList().observe(owner, new Observer<List<Specification>>() {
             @Override
             public void onChanged(List<Specification> specifications) {
-                specificationList.clear();
+                specificationAdapter.clear();
                 for (Specification specification : specifications) {
-                    specificationList.add(specification);
+                    specificationAdapter.add(specification);
                 }
                 specificationAdapter.notifyDataSetChanged();
                 if (specifications.size() > 0) {

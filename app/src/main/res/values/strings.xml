@@ -15,4 +15,5 @@
     <string name="menu_action_sales_date">Ventas por día</string>
     <string name="menu_action_sales_now">Ventas de hoy</string>
     <string name="menu_action_sale_save">Registrar venta</string>
+    <string name="menu_main_credit">Cuentas</string>
 </resources>

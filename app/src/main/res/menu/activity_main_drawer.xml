@@ -23,5 +23,10 @@
             android:id="@+id/nav_main_sale"
             android:icon="@drawable/ic_card_giftcard_black_24dp"
             android:title="@string/menu_main_sale" />
+
+        <item
+            android:id="@+id/nav_main_credit"
+            android:icon="@drawable/ic_card_giftcard_black_24dp"
+            android:title="@string/menu_main_credit" />
     </group>
 </menu>

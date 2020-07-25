@@ -76,7 +76,6 @@
         android:inputType="numberDecimal"
         android:textSize="@dimen/title_text"
         android:maxLines="1">
-        <requestFocus/>
     </EditText>
     <TextView
         android:id="@+id/title_amount"
@@ -97,5 +96,6 @@
         app:layout_constraintTop_toBottomOf="@id/title_amount"
         android:inputType="number"
         android:maxLines="1">
+        <requestFocus/>
     </EditText>
 </androidx.constraintlayout.widget.ConstraintLayout>

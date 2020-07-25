@@ -12,16 +12,17 @@ import androidx.annotation.Nullable;
 import com.gas.storeapp.R;
 import com.gas.storeapp.model.Specification;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class SpecificationAdapter extends ArrayAdapter<Specification> {
     private Context context;
     private List<Specification> specifications;
 
-    public SpecificationAdapter(@NonNull Context context, @NonNull List<Specification> objects) {
-        super(context, R.layout.specification_item, objects);
+    public SpecificationAdapter(@NonNull Context context) {
+        super(context, R.layout.specification_item);
         this.context = context;
-        this.specifications = objects;
+        this.specifications = new ArrayList<>();
     }
 
     @NonNull
@@ -54,5 +55,11 @@ public class SpecificationAdapter extends ArrayAdapter<Specification> {
     @Override
     public long getItemId(int position) {
         return position;
+    }
+
+    @Override
+    public void clear() {
+        specifications.clear();
+        notifyDataSetChanged();
     }
 }

@@ -36,14 +36,12 @@ import com.gas.storeapp.ui.adapters.SaleItem;
 import com.gas.storeapp.ui.adapters.SaleItemAdapter;
 import com.gas.storeapp.ui.dialogs.ProductInputDialogFragment;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class SaleFragment extends Fragment implements ProductInputDialogFragment.INotifyOrderInputListener {
 
     private SaleViewModel mViewModel;
     private AutoCompleteTextView productSearch;
-    private List<Product> productList;
     private Context context;
     private SaleItemAdapter saleItemAdapter;
     private Product currentProduct;
@@ -74,8 +72,7 @@ public class SaleFragment extends Fragment implements ProductInputDialogFragment
         super.onActivityCreated(savedInstanceState);
         mViewModel = ViewModelProviders.of(this).get(SaleViewModel.class);
         LifecycleOwner owner = getViewLifecycleOwner();
-        productList = new ArrayList<>();
-        ProductAdapter productAdapter = new ProductAdapter(context, productList);
+        ProductAdapter productAdapter = new ProductAdapter(context);
         productSearch.setAdapter(productAdapter);
         productSearch.setOnKeyListener(new View.OnKeyListener() {
             @Override
@@ -112,7 +109,8 @@ public class SaleFragment extends Fragment implements ProductInputDialogFragment
             @Override
             public void onChanged(List<OrderDetail> orderDetails) {
                 if (currentProduct != null && currentAmount > 0) {
-                    if (currentAmount == orderDetails.size()) {
+                    int count = orderDetails.size();
+                    if (currentAmount == count) {
                         saleItemAdapter.addSaleDetail(new SaleItem(currentUnitPrice, currentAmount, currentProduct));
                         for (OrderDetail orderDetail : orderDetails) {
                             mViewModel.addSaleDetail(orderDetail, currentUnitPrice);
@@ -120,7 +118,10 @@ public class SaleFragment extends Fragment implements ProductInputDialogFragment
                         total += currentAmount * currentUnitPrice;
                         totalTextView.setText(String.format("$ %.2f", total));
                     } else {
-                        Toast.makeText(context, "No hay unidades suficientes en stock", Toast.LENGTH_LONG).show();
+                        if (count == 0)
+                            Toast.makeText(context, "No hay unidades en stock.", Toast.LENGTH_LONG).show();
+                        else
+                            Toast.makeText(context, "Solo quedan " + count + " unidades en stock.", Toast.LENGTH_LONG).show();
                     }
                 }
             }
