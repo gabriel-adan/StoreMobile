@@ -5,6 +5,7 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <ListView
+        android:id="@+id/list_view_credit_item"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         tools:listitem="@layout/credit_item_detail"/>

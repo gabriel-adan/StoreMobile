@@ -7,6 +7,7 @@ import androidx.lifecycle.ViewModel;
 import com.gas.storeapp.model.Credit;
 import com.gas.storeapp.model.CreditResume;
 import com.gas.storeapp.model.Customer;
+import com.gas.storeapp.model.Payment;
 import com.gas.storeapp.services.HttpService;
 import com.gas.storeapp.services.credit.ICreditService;
 
@@ -22,15 +23,15 @@ public class MainCreditViewModel extends ViewModel {
     private ICreditService creditService;
     private MutableLiveData<List<Credit>> creditList;
     private MutableLiveData<List<Customer>> customerList;
-    private MutableLiveData<CreditResume> creditResume;
-    private Credit creditSelected;
-    private CreditResume creditResumeSelected;
+    private MutableLiveData<List<CreditResume.CreditItemResume>> creditItemDetails;
+    private MutableLiveData<List<Payment>> payments;
 
     public MainCreditViewModel() {
         creditService = HttpService.createService(ICreditService.class);
         creditList = new MutableLiveData<>();
         customerList = new MutableLiveData<>();
-        creditResume = new MutableLiveData<>();
+        creditItemDetails = new MutableLiveData<>();
+        payments = new MutableLiveData<>();
     }
 
     public void getCredits(Customer customer) {
@@ -77,33 +78,29 @@ public class MainCreditViewModel extends ViewModel {
         return customerList;
     }
 
-    public void getCreditResume() {
-        if (creditSelected != null) {
-            creditService.getDetail(creditSelected.getId()).enqueue(new Callback<CreditResume>() {
-                @Override
-                public void onResponse(Call<CreditResume> call, Response<CreditResume> response) {
-                    if (response.isSuccessful()) {
-                        creditResume.setValue(response.body());
-                    }
+    public void getCreditResume(int id) {
+        creditService.getDetail(id).enqueue(new Callback<CreditResume>() {
+            @Override
+            public void onResponse(Call<CreditResume> call, Response<CreditResume> response) {
+                if (response.isSuccessful()) {
+                    CreditResume creditResume = response.body();
+                    creditItemDetails.setValue(creditResume.getCreditDetails());
+                    payments.setValue(creditResume.getPayments());
                 }
+            }
 
-                @Override
-                public void onFailure(Call<CreditResume> call, Throwable t) {
+            @Override
+            public void onFailure(Call<CreditResume> call, Throwable t) {
 
-                }
-            });
-        }
+            }
+        });
     }
 
-    public void selectCredit(Credit credit) {
-        creditSelected = credit;
+    public LiveData<List<CreditResume.CreditItemResume>> onCreditItemResume() {
+        return creditItemDetails;
     }
 
-    public LiveData<CreditResume> onCreditResume() {
-        return creditResume;
-    }
-
-    public void setCreditResumeSelected(CreditResume creditResumeSelected) {
-        this.creditResumeSelected = creditResumeSelected;
+    public LiveData<List<Payment>> onPayments() {
+        return payments;
     }
 }

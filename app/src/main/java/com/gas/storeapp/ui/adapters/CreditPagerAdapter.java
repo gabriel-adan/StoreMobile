@@ -10,9 +10,13 @@ import com.gas.storeapp.ui.credit.CreditPaymentFragment;
 
 public class CreditPagerAdapter extends FragmentPagerAdapter {
     private int tabCount;
+    private CreditDetailFragment creditDetailFragment;
+    private CreditPaymentFragment creditPaymentFragment;
     public CreditPagerAdapter(@NonNull FragmentManager fm, int tabCount) {
         super(fm, tabCount);
         this.tabCount = tabCount;
+        creditDetailFragment = CreditDetailFragment.newInstance();
+        creditPaymentFragment = CreditPaymentFragment.newInstance();
     }
 
     @NonNull
@@ -20,9 +24,9 @@ public class CreditPagerAdapter extends FragmentPagerAdapter {
     public Fragment getItem(int position) {
         switch (position) {
             case 0:
-                return new CreditDetailFragment();
+                return creditDetailFragment;
             case 1:
-                return new CreditPaymentFragment();
+                return creditPaymentFragment;
             default:
                 return null;
         }

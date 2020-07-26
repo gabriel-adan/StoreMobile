@@ -58,7 +58,6 @@
         app:layout_constraintTop_toBottomOf="@id/text_color"/>
     <TextView
         android:id="@+id/title_cost"
-        android:text="Costo Unitario"
         android:textSize="@dimen/title_text"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -90,12 +89,12 @@
         android:id="@+id/input_amount"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:text="1"
         android:textSize="@dimen/title_text"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/title_amount"
         android:inputType="number"
         android:maxLines="1">
-        <requestFocus/>
     </EditText>
 </androidx.constraintlayout.widget.ConstraintLayout>

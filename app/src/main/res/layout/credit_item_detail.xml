@@ -15,17 +15,17 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"/>
     <TextView
-        android:id="@+id/tv_credit_detail_mark"
-        android:textSize="@dimen/title_text"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"/>
-    <TextView
-        android:id="@+id/tv_credit_brand"
+        android:id="@+id/tv_credit_brand_detail"
         android:textSize="@dimen/title_text"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"/>
     <TextView
         android:id="@+id/tv_credit_size_color"
+        android:textSize="@dimen/title_text"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+    <TextView
+        android:id="@+id/tv_category"
         android:textSize="@dimen/title_text"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"/>

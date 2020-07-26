@@ -29,6 +29,7 @@ public class OrderViewModel extends ViewModel {
     private IOrderService orderService;
     private MutableLiveData<String> messageOk;
     private MutableLiveData<String> messageError;
+    private MutableLiveData<Float> onTotal;
 
     public OrderViewModel() {
         productService = HttpService.createService(ICatalogService.class);
@@ -37,6 +38,7 @@ public class OrderViewModel extends ViewModel {
         orderService = HttpService.createService(IOrderService.class);
         messageOk = new MutableLiveData<>();
         messageError = new MutableLiveData<>();
+        onTotal = new MutableLiveData<Float>(0.00f);
     }
 
     public LiveData<List<Product>> onProductList() {
@@ -71,10 +73,18 @@ public class OrderViewModel extends ViewModel {
 
     public void addOrderItem (OrderDetail item) {
         orderDetails.add(item);
+        float total = onTotal.getValue() + (item.getAmount() * item.getUnitCost());
+        onTotal.setValue(total);
     }
 
     public void removeOrderItem(int index) {
-        orderDetails.remove(index);
+        OrderDetail orderDetail = orderDetails.remove(index);
+        float total = onTotal.getValue() - (orderDetail.getAmount() * orderDetail.getUnitCost());
+        onTotal.setValue(total);
+    }
+
+    public LiveData<Float> onTotal() {
+        return onTotal;
     }
 
     public boolean register(Date date, String ticketCode) {

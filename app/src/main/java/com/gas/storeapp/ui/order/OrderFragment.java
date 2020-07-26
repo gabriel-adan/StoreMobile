@@ -4,7 +4,9 @@ import androidx.lifecycle.LifecycleOwner;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProviders;
 
+import android.app.AlertDialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -16,11 +18,15 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.text.TextUtils;
 import android.view.KeyEvent;
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.AutoCompleteTextView;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.gas.storeapp.R;
@@ -42,6 +48,7 @@ public class OrderFragment extends Fragment implements ProductInputDialogFragmen
     private Context context;
     private ProductItemAdapter productItemAdapter;
     private EditText editDate, editTicketCode;
+    private TextView totalTextView;
 
     public static OrderFragment newInstance() {
         return new OrderFragment();
@@ -127,6 +134,14 @@ public class OrderFragment extends Fragment implements ProductInputDialogFragmen
                 Toast.makeText(context, s, Toast.LENGTH_LONG).show();
             }
         });
+
+        mViewModel.onTotal().observe(owner, new Observer<Float>() {
+            @Override
+            public void onChanged(Float total) {
+                if (totalTextView != null)
+                    totalTextView.setText(String.format("$ %.2f", total));
+            }
+        });
     }
 
     @Override
@@ -142,7 +157,7 @@ public class OrderFragment extends Fragment implements ProductInputDialogFragmen
     }
 
     private void showInputDialog(Product product) {
-        ProductInputDialogFragment dialog = new ProductInputDialogFragment(this, product);
+        ProductInputDialogFragment dialog = new ProductInputDialogFragment(this, product, "Precio Unitario de Costo", 0);
         dialog.show(getActivity().getSupportFragmentManager(), "OrderItem");
     }
 
@@ -167,5 +182,43 @@ public class OrderFragment extends Fragment implements ProductInputDialogFragmen
                 Toast.makeText(context, "No hay productos para registrar, ingrese los productos.", Toast.LENGTH_LONG).show();
             }
         }
+    }
+
+    @Override
+    public void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setHasOptionsMenu(true);
+    }
+
+    @Override
+    public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
+        inflater.inflate(R.menu.order, menu);
+        MenuItem menuItem = menu.findItem(R.id.action_order_total);
+        totalTextView = (TextView) menuItem.getActionView();
+        totalTextView.setText("$ 0.00");
+        super.onCreateOptionsMenu(menu, inflater);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        switch (item.getItemId()) {
+            case R.id.action_order_save:
+                AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
+                builder.setTitle("Registro de Factura")
+                        .setMessage("¿Está seguro que desea registrar la factura?")
+                        .setPositiveButton("Registrar", new DialogInterface.OnClickListener() {
+                            public void onClick(DialogInterface dialog, int id) {
+                                registerOrder();
+                            }
+                        })
+                        .setNegativeButton("Cancelar", new DialogInterface.OnClickListener() {
+                            public void onClick(DialogInterface dialog, int id) {
+
+                            }
+                        });
+                builder.create().show();
+                break;
+        }
+        return super.onOptionsItemSelected(item);
     }
 }

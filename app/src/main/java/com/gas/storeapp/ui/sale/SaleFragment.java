@@ -159,7 +159,7 @@ public class SaleFragment extends Fragment implements ProductInputDialogFragment
     }
 
     private void showInputDialog(Product product) {
-        ProductInputDialogFragment dialog = new ProductInputDialogFragment(this, product);
+        ProductInputDialogFragment dialog = new ProductInputDialogFragment(this, product, "Precio de Venta", product.getPrice());
         dialog.show(getActivity().getSupportFragmentManager(), "OrderItem");
     }
 

@@ -16,10 +16,14 @@ import com.gas.storeapp.model.Product;
 public class ProductInputDialogFragment extends DialogFragment {
     private INotifyOrderInputListener listener;
     private Product product;
+    private String priceTitle;
+    private float priceValue;
 
-    public ProductInputDialogFragment(INotifyOrderInputListener listener, Product product) {
+    public ProductInputDialogFragment(INotifyOrderInputListener listener, Product product, String priceTitle, float priceValue) {
         this.listener = listener;
         this.product = product;
+        this.priceTitle = priceTitle;
+        this.priceValue = priceValue;
     }
 
     @Override
@@ -34,7 +38,7 @@ public class ProductInputDialogFragment extends DialogFragment {
         TextView textSize = view.findViewById(R.id.text_size);
         TextView textColor = view.findViewById(R.id.text_color);
         EditText textCost = view.findViewById(R.id.input_cost);
-        textCost.setText(product.getPrice() + "");
+        textCost.setText(priceValue + "");
         EditText textAmount = view.findViewById(R.id.input_amount);
         textCode.setText(product.getCode());
         textDescription.setText(product.getSpecification().getDescription());
@@ -42,6 +46,10 @@ public class ProductInputDialogFragment extends DialogFragment {
         textPrice.setText("Precio de Venta: $" + product.getPrice());
         textSize.setText("Talle: " + product.getSize().getName());
         textColor.setText("Color: " + product.getColor().getName());
+
+        TextView titlePrice = view.findViewById(R.id.title_cost);
+        titlePrice.setText(priceTitle);
+
         builder.setView(view)
                 .setPositiveButton("Aceptar", new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int id) {

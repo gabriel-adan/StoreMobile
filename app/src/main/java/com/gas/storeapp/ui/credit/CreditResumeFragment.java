@@ -4,13 +4,13 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.LifecycleOwner;
 import androidx.lifecycle.Observer;
+import androidx.lifecycle.ViewModelProvider;
 import androidx.lifecycle.ViewModelProviders;
 import androidx.viewpager.widget.ViewPager;
 
@@ -22,10 +22,12 @@ import com.google.android.material.tabs.TabLayout;
 public class CreditResumeFragment extends Fragment {
 
     private MainCreditViewModel mViewModel;
+    private CreditPagerAdapter creditPagerAdapter;
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        mViewModel = new ViewModelProvider(requireActivity()).get(MainCreditViewModel.class);
     }
 
     @Nullable
@@ -37,7 +39,7 @@ public class CreditResumeFragment extends Fragment {
         tabLayout.addTab(tabLayout.newTab().setText("Artículos"));
         tabLayout.addTab(tabLayout.newTab().setText("Pagos"));
         tabLayout.setTabGravity(TabLayout.GRAVITY_FILL);
-        CreditPagerAdapter creditPagerAdapter = new CreditPagerAdapter(getParentFragmentManager(), tabLayout.getTabCount());
+        creditPagerAdapter = new CreditPagerAdapter(getParentFragmentManager(), tabLayout.getTabCount());
         viewPager.setAdapter(creditPagerAdapter);
 
         viewPager.addOnPageChangeListener(new TabLayout.TabLayoutOnPageChangeListener(tabLayout));
@@ -64,14 +66,7 @@ public class CreditResumeFragment extends Fragment {
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
-        mViewModel = ViewModelProviders.of(this).get(MainCreditViewModel.class);
-        LifecycleOwner owner = getViewLifecycleOwner();
-        mViewModel.onCreditResume().observe(owner, new Observer<CreditResume>() {
-            @Override
-            public void onChanged(CreditResume creditResume) {
-                mViewModel.setCreditResumeSelected(creditResume);
-            }
-        });
-        mViewModel.getCreditResume();
+        Bundle creditId = getArguments();
+        mViewModel.getCreditResume(creditId.getInt("id"));
     }
 }

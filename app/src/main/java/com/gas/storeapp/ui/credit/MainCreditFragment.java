@@ -3,6 +3,7 @@ package com.gas.storeapp.ui.credit;
 import androidx.appcompat.widget.AppCompatSpinner;
 import androidx.lifecycle.LifecycleOwner;
 import androidx.lifecycle.Observer;
+import androidx.lifecycle.ViewModelProvider;
 import androidx.lifecycle.ViewModelProviders;
 
 import android.content.Context;
@@ -56,7 +57,7 @@ public class MainCreditFragment extends Fragment implements AdapterView.OnItemSe
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
-        mViewModel = ViewModelProviders.of(this).get(MainCreditViewModel.class);
+        mViewModel = new ViewModelProvider(requireActivity()).get(MainCreditViewModel.class);
         context = getContext();
         LifecycleOwner owner = getViewLifecycleOwner();
         mViewModel.onCustomerList().observe(owner, new Observer<List<Customer>>() {
@@ -67,6 +68,9 @@ public class MainCreditFragment extends Fragment implements AdapterView.OnItemSe
                 customerSpinner.setAdapter(customerAdapter);
             }
         });
+
+        mViewModel.getCustomers();
+
         mViewModel.onCreditList().observe(owner, new Observer<List<Credit>>() {
             @Override
             public void onChanged(List<Credit> credits) {
@@ -77,7 +81,6 @@ public class MainCreditFragment extends Fragment implements AdapterView.OnItemSe
                 creditAdapter.notifyDataSetChanged();
             }
         });
-        mViewModel.getCustomers();
     }
 
     @Override
@@ -95,7 +98,8 @@ public class MainCreditFragment extends Fragment implements AdapterView.OnItemSe
 
     @Override
     public void OnCreditClick(View view, Credit credit) {
-        mViewModel.selectCredit(credit);
-        Navigation.findNavController(view).navigate(R.id.action_nav_main_credit_to_creditResumeFragment);
+        Bundle creditBundle = new Bundle();
+        creditBundle.putInt("id", credit.getId());
+        Navigation.findNavController(view).navigate(R.id.action_nav_main_credit_to_creditResumeFragment, creditBundle);
     }
 }
